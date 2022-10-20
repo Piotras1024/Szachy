@@ -16,6 +16,7 @@ class Board:
         abcd = ["A", "B", "C", "D", "E", "F", "G", "H"]
         print("   " + " ".join(abcd))
         for y in range(8):
-            print(f"{i} |" + f"|".join(map(lambda x: "_", self.board[y])) + "|" + f" {i}")
+            print(f"{i} |" + f"|".join(map(lambda field: field.string(), self.board[y])) + "|" + f" {i}")
             i = i + 1
         print("   " + " ".join(abcd))
+

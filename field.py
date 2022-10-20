@@ -1,8 +1,16 @@
+
 class Field:
-    def __init__(self, x, y, color=None):
+    def __init__(self, x, y, figure=None):
         self.x = x
         self.y = y
-        self.color = color
+        self.figure = figure
 
-    def Nic(self):
-        pass
+    def set_figure(self, figure):
+        self.figure = figure
+        return self.figure
+
+    def string(self):
+        if self.figure is None:
+            return "_"
+        return self.figure.string()
+
