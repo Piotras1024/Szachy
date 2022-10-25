@@ -9,8 +9,10 @@ class Field:
         self.figure = figure
         return self.figure
 
+    def move(self, move_str):
+        return self.figure.move(move_str)
+
     def string(self):
         if self.figure is None:
             return "_"
         return self.figure.string()
-
