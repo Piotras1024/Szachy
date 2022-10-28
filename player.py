@@ -10,12 +10,11 @@ class Player:
         return self.player
 
     @staticmethod
-    def get_input():
+    def get_input(move_str):
         abcd = ["A", "B", "C", "D", "E", "F", "G", "H"]
         digits = [abcd.index(digit) for digit in abcd]
         send = True
         while send:
-            move_str = input("podaj A2, B3")
             if len(move_str) != 4:
                 print("too long or too short answer AB23 ;)")
                 continue
@@ -46,3 +45,6 @@ class Player:
             x_to = int(abcd.index(x_to.upper()))
             y_to = int(y_to) - 1
             return x_from, y_from, x_to, y_to
+
+    def string(self):
+        return self.player

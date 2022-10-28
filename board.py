@@ -26,3 +26,8 @@ class Board:
         field_from = self.board[y_from][x_from]
         field_to = self.board[y_to][x_to]
         return field_from.move(field_to)
+
+    def end_game(self):
+        if self.board[0][0].string() != "_":
+            return True
+        return False
