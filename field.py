@@ -12,8 +12,16 @@ class Field:
         if self.figure is None:
             print(f"na {self.x}, {self.y} nie ma figury")
             return False
+        elif self.figure is not None and another_field.figure is None:
+            another_field.figure = self.figure
+            self.figure = None
+            return True
 
-        if not self.figure.can_move(another_field.x, another_field.x):
+        if self.figure.color == another_field.figure.color:
+            print(f"Nie zbijaj swoich Figur !")
+            return False
+
+        if not self.figure.can_move(another_field.x, another_field.y, self.x, self.y):
             print(f"Ruch nie mozliwy")
             return False
 

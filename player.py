@@ -13,11 +13,10 @@ class Player:
     def get_input(move_str):
         abcd = ["A", "B", "C", "D", "E", "F", "G", "H"]
         digits = [abcd.index(digit) for digit in abcd]
-        send = True
-        while send:
+        send = False
+        while not send:
             if len(move_str) != 4:
-                print("too long or too short answer AB23 ;)")
-                continue
+                return "", "", "", "", send
 
             x_from = move_str[0]
             y_from = move_str[1]
@@ -25,26 +24,26 @@ class Player:
             y_to = move_str[3]
             if not y_from.isnumeric():
                 print(f"Wrong Y FROM, second letter")
-                continue
+                return "", "", "", "", send
             if not y_to.isnumeric():
                 print(f"Wrong Y TO, LAST LETTER (4)  [{ y_to}]")
-                continue
+                return "", "", "", "", send
             if not x_from.upper() in abcd:
                 print(f"wrong X FROM, first letter  [{x_from}]")
-                continue
+                return "", "", "", "", send
             if not x_to.upper() in abcd:
                 print(f"wrong X TO, second letter  [{x_to}]")
-                continue
+                return "", "", "", "", send
             if not int(move_str[1]) in digits:
                 print(f"wrong Y FROM, third letter  [{y_from}]")
-                continue
+                return "", "", "", "", send
 
-            send = False
+            send = True
             x_from = int(abcd.index(x_from.upper()))
             y_from = int(y_from) - 1
             x_to = int(abcd.index(x_to.upper()))
             y_to = int(y_to) - 1
-            return x_from, y_from, x_to, y_to
+            return x_from, y_from, x_to, y_to, send
 
     def string(self):
         return self.player
