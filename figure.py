@@ -4,7 +4,7 @@ class Figure:
         self.color = color
         self.board = board
 
-    def can_move(self, x_to, y_to):
+    def can_move(self, x_from, y_from, x_to, y_to):
         raise NotImplementedError
 
     def string(self):

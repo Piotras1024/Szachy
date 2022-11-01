@@ -21,7 +21,7 @@ class Field:
             print(f"Nie zbijaj swoich Figur !")
             return False
 
-        if not self.figure.can_move(another_field.x, another_field.y, self.x, self.y):
+        if not self.figure.can_move(self.x, self.y, another_field.x, another_field.y):
             print(f"Ruch nie mozliwy")
             return False
 

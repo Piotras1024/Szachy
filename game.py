@@ -20,11 +20,12 @@ class Game:
             x_from, y_from, x_to, y_to, send = player.get_input(move_str)
             if send:
                 if self.board.board[y_from][x_from].figure is not None:
-                    print("can_move >> ", self.board.board[y_from][x_from].figure.can_move(x_to, y_to, x_from, y_from))
-                    if self.board.board[y_from][x_from].figure.can_move(x_to, y_to, x_from, y_from):
+                    if self.board.board[y_from][x_from].figure.can_move(x_from, y_from, x_to, y_to):
                         print("move accepted")
                         if self.board.move(x_from, y_from, x_to, y_to):
                             print("ruch poszedł")
                             self.board.print()
                             player.change_player()
                             send = False
+                    else:
+                        print("Bad move")

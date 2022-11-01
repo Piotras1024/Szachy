@@ -3,44 +3,27 @@ from figure import Figure
 
 class Pawn(Figure):
     def __init__(self, board, color):
+        self.direction = 1 if color == 'w' else -1
         super().__init__(board, "P", color)
 
-    def can_move(self, x_to, y_to, x_from, y_from):
+    def can_move(self, x_from, y_from, x_to, y_to):
         print(x_to, y_to, x_from, y_from)   # 0 , 3, 0, 1 >>A2A4
         try:
+            # Jesli tam gdzie chcemy sie ruszyc jest puste
             if self.board.board[y_to][x_to].figure is None:
-                if y_from == 1 or y_from == 6:
-                    if self.color == "b" and x_to == x_from:
-                        if y_to == y_from - 1 or y_to == y_from - 2:
-                            return True
-                        return False
-                    if self.color == "w" and x_to == x_from:
-                        if y_to == y_from + 1 or y_to == y_from + 2:
-                            return True
-                        return False
-                    return False
-                else:
-                    if self.color == "b" and x_to == x_from:                    #todo
-                        if y_to == y_from - 1 or y_to == y_from - 2:
-                            return True
-                        return False
-                    if self.color == "w" and x_to == x_from:
-                        if y_to == y_from + 1 or y_to == y_from + 2:
-                            return True
-                        return False
-                    return False
-            elif self.board.board[y_to+1][x_to-1].figure is not None:   #bicie malymi na ukos w lewo
-                return True
-            elif self.board.board[y_to+1][x_to+1].figure is not None:   #bicie malymi na ukos w prawo
-                return True
-            elif self.board.board[y_to-1][x_to+1].figure is not None:   #bicie duzymi na ukos w lewo
-                return True
-            elif self.board.board[y_to+1][x_to-1].figure is not None:   #bicie duzymi na ukos w prawo
-                return True
-            else:
-                return False
+                # i ruszamy sie o jedno pole w dobrym kierunku
+                if x_to == x_from:
+                    if y_to == y_from + self.direction:
+                        return True
+                    # lub o dwa pola w dobrym kierunku. Sprawdzamy jeszcze pole posrednie czy nie ma tam pionka.
+                    elif y_to == y_from + 2 * self.direction and self.board.board[y_from + self.direction][x_to].figure is None:
+                        return True
+            elif self.board.board[y_to][x_to].figure.color != self.color:
+                if y_to == y_from + self.direction and x_to in (x_from - 1, x_from + 1):
+                    return True
+            return False
         except IndexError:
-            print("błędny ruch")
+            print("błędny ruch, poza boardem")
             return False
 
 
