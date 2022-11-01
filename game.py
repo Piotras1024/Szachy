@@ -18,7 +18,6 @@ class Game:
             print(f"Teraz Tura >> {player.player} << gracza")
             move_str = input("Podaj Ruch A2B3")
             x_from, y_from, x_to, y_to, send = player.get_input(move_str)
-            print(self.board.board[1][3].figure.color)
             if send:
                 if self.board.board[y_from][x_from].figure is not None:
                     print("can_move >> ", self.board.board[y_from][x_from].figure.can_move(x_to, y_to, x_from, y_from))
