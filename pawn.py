@@ -7,7 +7,6 @@ class Pawn(Figure):
         super().__init__(board, "P", color)
 
     def can_move(self, x_from, y_from, x_to, y_to):
-        print(x_to, y_to, x_from, y_from)   # 0 , 3, 0, 1 >>A2A4
         try:
             # Jesli tam gdzie chcemy sie ruszyc jest puste
             if self.board.board[y_to][x_to].figure is None:
@@ -23,7 +22,7 @@ class Pawn(Figure):
                     return True
             return False
         except IndexError:
-            print("błędny ruch, poza boardem")
+            print("błędny ruch, pion poza boardem")
             return False
 
 

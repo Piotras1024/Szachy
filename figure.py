@@ -13,3 +13,15 @@ class Figure:
         elif self.color == "b":
             return self.sign.lower()
         raise NotImplementedError
+
+    @staticmethod
+    def direction(figure_from=int, figure_to=int):
+        ## podaje kierunek zmiany
+        if figure_to - figure_from > 0:
+            direction = 1
+            return direction
+        elif figure_to - figure_from < 0:
+            direction = -1
+            return direction
+        else:
+            return -99999

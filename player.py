@@ -34,7 +34,7 @@ class Player:
             if not x_to.upper() in abcd:
                 print(f"wrong X TO, second letter  [{x_to}]")
                 return "", "", "", "", send
-            if not int(move_str[1]) in digits:
+            if not (int(y_from)-1) in digits:
                 print(f"wrong Y FROM, third letter  [{y_from}]")
                 return "", "", "", "", send
 
