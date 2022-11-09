@@ -1,5 +1,6 @@
 from figure import Figure
 
+
 class Bishop(Figure):
     def __init__(self, board, color):
         super().__init__(board, "B", color)

@@ -27,7 +27,18 @@ class Board:
         field_to = self.board[y_to][x_to]
         return field_from.move(field_to)
 
+    def string_of_figures(self):
+        tab_of_figures = []
+        for y in range(8):
+            figures = f"|".join(map(lambda field: field.string(), self.board[y]))
+            tab_of_figures.append(figures)
+        string_of_figures = "|".join(tab_of_figures)
+        return string_of_figures
+
     def end_game(self):
-        if self.board[0][0].string() != "_":
+        if self.string_of_figures().find("k") == -1:
             return True
-        return False
+        elif self.string_of_figures().find("K") == -1:
+            return True
+        else:
+            return False
